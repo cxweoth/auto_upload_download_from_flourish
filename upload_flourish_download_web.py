@@ -15,8 +15,9 @@ ROOT_PATH = dirname(abspath(__file__))
 
 class FlourishWebGenerator:
 
-    def __init__(self):
+    def __init__(self, source_path=join(ROOT_PATH, 'file_upload')):
         self.driver = None
+        self.source_path = source_path
 
     def create_driver(self, account, password, full_screen=False):
 
@@ -59,7 +60,7 @@ class FlourishWebGenerator:
         # 放入 data 先點上傳 然後用 autoit 選上傳資料
         driver.find_element_by_xpath("//*[@class='btn action' and @ data-action='add-data']").click()
 
-        upload_file_path = join(join(ROOT_PATH, 'file_upload'), upload_file_name)
+        upload_file_path = join(self.source_path, upload_file_name)
         write_csv(ROOT_PATH, 'file_path.csv', {0: [upload_file_path]})
 
         os.system(join(ROOT_PATH, 'load_csv_then_upload_file.exe'))
