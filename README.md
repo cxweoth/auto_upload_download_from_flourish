@@ -1,3 +1,5 @@
+# This repository is end of life. Please do not use it.
+
 # auto_upload_download_from_flourish
 安裝 python Lib: requests, selenium
 主要 code: upload_flourish_download_web
